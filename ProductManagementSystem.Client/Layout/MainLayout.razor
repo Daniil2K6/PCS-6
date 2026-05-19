@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+@using ProductManagementSystem.Client
+@inject ThemeService ThemeService
+@implements IAsyncDisposable
+
+<div class="page @ThemeService.ThemeClass">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">О Blazor</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
+    }
+}

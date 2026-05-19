@@ -1,0 +1,143 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Server/ProductManagementSystem.Server.csproj": {}
+  },
+  "projects": {
+    "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Server/ProductManagementSystem.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Server/ProductManagementSystem.Server.csproj",
+        "projectName": "ProductManagementSystem.Server",
+        "projectPath": "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Server/ProductManagementSystem.Server.csproj",
+        "packagesPath": "/Users/daniilka/.nuget/packages/",
+        "outputPath": "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Server/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/daniilka/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Shared/ProductManagementSystem.Shared.csproj": {
+                "projectPath": "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Shared/ProductManagementSystem.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Shared/ProductManagementSystem.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Shared/ProductManagementSystem.Shared.csproj",
+        "projectName": "ProductManagementSystem.Shared",
+        "projectPath": "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Shared/ProductManagementSystem.Shared.csproj",
+        "packagesPath": "/Users/daniilka/.nuget/packages/",
+        "outputPath": "/Users/daniilka/Documents/dev/мусор/Программирование Корп Систем/PCS-6/ProductManagementSystem.Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/daniilka/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,346 @@
+@page "/products"
+@using ProductManagementSystem.Client.Services
+@using ProductManagementSystem.Shared
+@inject ProductService ProductService
+@inject ThemeService ThemeService
+@inject ILogger<Products> Logger
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1>Управление товарами</h1>
+        </div>
+        <div class="col-md-6 text-end">
+            <button class="btn btn-outline-secondary me-2" @onclick="ToggleTheme">
+                @if (ThemeService.IsDarkMode)
+                {
+                    <span>☀️ Светлая тема</span>
+                }
+                else
+                {
+                    <span>🌙 Темная тема</span>
+                }
+            </button>
+            <button class="btn btn-primary" @onclick="ShowAddForm">
+                ➕ Добавить товар
+            </button>
+        </div>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="alert alert-info">
+            <span class="spinner-border spinner-border-sm me-2"></span>
+            Загрузка товаров...
+        </div>
+    }
+    else if (errorMessage != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @errorMessage
+            <button type="button" class="btn-close" @onclick="() => errorMessage = null"></button>
+        </div>
+    }
+    else if (products != null && products.Count == 0)
+    {
+        <div class="alert alert-warning">
+            Нет товаров. <a href="#" @onclick="ShowAddForm">Добавьте первый товар</a>.
+        </div>
+    }
+    else if (products != null)
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Название</th>
+                        <th>Описание</th>
+                        <th class="text-end">Цена</th>
+                        <th class="text-center">Количество</th>
+                        <th class="text-center">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in products)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td><strong>@product.Name</strong></td>
+                            <td>@product.Description</td>
+                            <td class="text-end"><strong>@product.Price.ToString("C")</strong></td>
+                            <td class="text-center">
+                                <span class="badge bg-@(product.Stock > 0 ? "success" : "danger")">
+                                    @product.Stock шт.
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-info" @onclick="() => ShowEditForm(product)">
+                                    ✏️ Редактировать
+                                </button>
+                                <button class="btn btn-sm btn-danger" @onclick="() => ShowDeleteConfirm(product)">
+                                    🗑️ Удалить
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @* Модальное окно для добавления/редактирования *@
+    @if (showFormModal)
+    {
+        <div class="modal show" style="display: block;" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            @if (editingProduct?.Id == 0)
+                            {
+                                <span>Добавить новый товар</span>
+                            }
+                            else
+                            {
+                                <span>Редактировать товар</span>
+                            }
+                        </h5>
+                        <button type="button" class="btn-close" @onclick="HideFormModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="productName" class="form-label">Название:</label>
+                                <input type="text" class="form-control" id="productName" 
+                                       @bind="editingProduct.Name" placeholder="Введите название товара" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="productDescription" class="form-label">Описание:</label>
+                                <textarea class="form-control" id="productDescription" rows="3" 
+                                          @bind="editingProduct.Description" 
+                                          placeholder="Введите описание товара"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="productPrice" class="form-label">Цена:</label>
+                                        <input type="number" class="form-control" id="productPrice" 
+                                               step="0.01" @bind="editingProduct.Price" 
+                                               placeholder="0.00" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="productStock" class="form-label">Количество:</label>
+                                        <input type="number" class="form-control" id="productStock" 
+                                               @bind="editingProduct.Stock" placeholder="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="HideFormModal">
+                            Отмена
+                        </button>
+                        <button type="button" class="btn btn-primary" @onclick="SaveProduct">
+                            @if (isSaving)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2"></span>
+                                <span>Сохранение...</span>
+                            }
+                            else
+                            {
+                                <span>Сохранить</span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop show"></div>
+    }
+
+    @* Модальное окно подтверждения удаления *@
+    @if (showDeleteConfirmModal)
+    {
+        <div class="modal show" style="display: block;" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Подтверждение удаления</h5>
+                        <button type="button" class="btn-close" @onclick="HideDeleteConfirm"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Вы уверены, что хотите удалить товар <strong>@deletingProduct?.Name</strong>?</p>
+                        <p class="text-muted">Это действие нельзя отменить.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="HideDeleteConfirm">
+                            Отмена
+                        </button>
+                        <button type="button" class="btn btn-danger" @onclick="ConfirmDelete">
+                            @if (isDeleting)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2"></span>
+                                <span>Удаление...</span>
+                            }
+                            else
+                            {
+                                <span>Удалить</span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop show"></div>
+    }
+</div>
+
+@code {
+    private List<Product>? products;
+    private bool isLoading = true;
+    private bool isSaving = false;
+    private bool isDeleting = false;
+    private string? errorMessage;
+
+    private Product? editingProduct;
+    private bool showFormModal = false;
+
+    private Product? deletingProduct;
+    private bool showDeleteConfirmModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadProducts();
+    }
+
+    private async Task LoadProducts()
+    {
+        try
+        {
+            isLoading = true;
+            errorMessage = null;
+            products = await ProductService.GetProductsAsync();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Ошибка при загрузке товаров");
+            errorMessage = "Не удалось загрузить товары. Проверьте соединение с сервером.";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ShowAddForm()
+    {
+        editingProduct = new Product { Id = 0, Name = "", Description = "", Price = 0, Stock = 0 };
+        showFormModal = true;
+    }
+
+    private void ShowEditForm(Product product)
+    {
+        editingProduct = new Product
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            Price = product.Price,
+            Stock = product.Stock
+        };
+        showFormModal = true;
+    }
+
+    private void HideFormModal()
+    {
+        showFormModal = false;
+        editingProduct = null;
+    }
+
+    private async Task SaveProduct()
+    {
+        if (editingProduct == null || string.IsNullOrWhiteSpace(editingProduct.Name))
+        {
+            errorMessage = "Название товара обязательно.";
+            return;
+        }
+
+        if (editingProduct.Price < 0)
+        {
+            errorMessage = "Цена не может быть отрицательной.";
+            return;
+        }
+
+        try
+        {
+            isSaving = true;
+            errorMessage = null;
+
+            if (editingProduct.Id == 0)
+            {
+                await ProductService.CreateProductAsync(editingProduct);
+            }
+            else
+            {
+                await ProductService.UpdateProductAsync(editingProduct.Id, editingProduct);
+            }
+
+            HideFormModal();
+            await LoadProducts();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Ошибка при сохранении товара");
+            errorMessage = "Не удалось сохранить товар.";
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
+
+    private void ShowDeleteConfirm(Product product)
+    {
+        deletingProduct = product;
+        showDeleteConfirmModal = true;
+    }
+
+    private void HideDeleteConfirm()
+    {
+        showDeleteConfirmModal = false;
+        deletingProduct = null;
+    }
+
+    private async Task ConfirmDelete()
+    {
+        if (deletingProduct == null)
+            return;
+
+        try
+        {
+            isDeleting = true;
+            errorMessage = null;
+            await ProductService.DeleteProductAsync(deletingProduct.Id);
+            HideDeleteConfirm();
+            await LoadProducts();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Ошибка при удалении товара");
+            errorMessage = "Не удалось удалить товар.";
+        }
+        finally
+        {
+            isDeleting = false;
+        }
+    }
+
+    private void ToggleTheme()
+    {
+        ThemeService.ToggleTheme();
+    }
+}

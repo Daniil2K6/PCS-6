@@ -1,0 +1,50 @@
+﻿@page "/"
+@using ProductManagementSystem.Client
+@inject ThemeService ThemeService
+
+<PageTitle>Система управления товарами</PageTitle>
+
+<div class="container-fluid py-5">
+    <div class="row align-items-center min-vh-100">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                📦 Система управления товарами
+            </h1>
+            <p class="lead mb-5 text-muted">
+                Добро пожаловать в приложение управления товарами интернет-магазина.
+                Это приложение построено на Blazor WebAssembly с использованием ASP.NET Core и Entity Framework Core.
+            </p>
+            
+            <div class="card mb-5">
+                <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Функциональность приложения:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">✅ Просмотр списка всех товаров</li>
+                        <li class="list-group-item">✅ Добавление новых товаров</li>
+                        <li class="list-group-item">✅ Редактирование информации о товарах</li>
+                        <li class="list-group-item">✅ Удаление товаров с подтверждением</li>
+                        <li class="list-group-item">✅ Поддержка светлой и темной темы</li>
+                        <li class="list-group-item">✅ REST API на ASP.NET Core</li>
+                        <li class="list-group-item">✅ Хранение данных в SQL Server</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <NavLink href="/products" class="btn btn-primary btn-lg">
+                    Перейти к управлению товарами →
+                </NavLink>
+            </div>
+
+            <div class="mt-5 pt-5 border-top">
+                <p class="text-muted small">
+                    Проект выполнен в соответствии с заданием по дисциплине<br/>
+                    "Программирование корпоративных систем"
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+}
