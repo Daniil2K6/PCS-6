@@ -88,10 +88,76 @@ PCS-6/
 
 ### Требования
 - .NET 9.0 SDK
-- SQL Server или LocalDB
+- SQLite (встроена в .NET)
 - Visual Studio Code или другой редактор кода
 
-### Шаги запуска
+### 🚀 Быстрый запуск в 1 команду
+
+#### macOS / Linux
+```bash
+# Клонировать репозиторий, запустить сервер и клиент в одном скрипте
+git clone https://github.com/Daniil2K6/PCS-6.git && cd PCS-6 && \
+(cd ProductManagementSystem.Server && dotnet run) & \
+(cd ProductManagementSystem.Client && dotnet watch run)
+```
+
+#### Windows (PowerShell)
+```powershell
+# Клонировать и запустить
+git clone https://github.com/Daniil2K6/PCS-6.git; cd PCS-6; `
+Start-Process pwsh -ArgumentList "-Command cd ProductManagementSystem.Server; dotnet run"; `
+cd ProductManagementSystem.Client; dotnet watch run
+```
+
+---
+
+### 📋 Запуск в 3 команды
+
+#### macOS / Linux
+```bash
+# 1. Клонировать и перейти в проект
+git clone https://github.com/Daniil2K6/PCS-6.git && cd PCS-6
+
+# 2. Запустить сервер (Terminal 1)
+cd ProductManagementSystem.Server && dotnet run
+
+# 3. Запустить клиент (Terminal 2) - ПАРАЛЛЕЛЬНО в другом терминале
+cd ProductManagementSystem.Client && dotnet watch run
+```
+
+#### Windows (CMD)
+```cmd
+REM 1. Клонировать и перейти в проект
+git clone https://github.com/Daniil2K6/PCS-6.git
+cd PCS-6
+
+REM 2. Запустить сервер (Terminal 1)
+cd ProductManagementSystem.Server
+dotnet run
+
+REM 3. Запустить клиент (Terminal 2) - В ДРУГОМ ТЕРМИНАЛЕ (cmd)
+cd ProductManagementSystem.Client
+dotnet watch run
+```
+
+#### Windows (PowerShell)
+```powershell
+# 1. Клонировать и перейти в проект
+git clone https://github.com/Daniil2K6/PCS-6.git
+cd PCS-6
+
+# 2. Запустить сервер (Terminal 1)
+cd ProductManagementSystem.Server
+dotnet run
+
+# 3. Запустить клиент (Terminal 2) - В ДРУГОМ ОКНЕ PowerShell
+cd ProductManagementSystem.Client
+dotnet watch run
+```
+
+---
+
+### Детальные шаги запуска
 
 1. **Клонировать репозиторий**
 ```bash
@@ -99,27 +165,34 @@ git clone https://github.com/Daniil2K6/PCS-6.git
 cd PCS-6
 ```
 
-2. **Восстановить зависимости**
+2. **Восстановить зависимости** (опционально - автоматически при запуске)
 ```bash
 dotnet restore
 ```
 
-3. **Запустить сервер (в отдельном терминале)**
+3. **Запустить сервер** (в отдельном терминале)
 ```bash
 cd ProductManagementSystem.Server
 dotnet run
 ```
-Сервер запустится на `https://localhost:7088`
+Сервер запустится на `http://localhost:5280`
 
-4. **Запустить клиент (в отдельном терминале)**
+4. **Запустить клиент** (в отдельном терминале)
 ```bash
 cd ProductManagementSystem.Client
 dotnet watch run
 ```
-Клиент запустится на `https://localhost:7279`
+Клиент запустится на `http://localhost:5031`
 
 5. **Открыть в браузере**
-Перейти на `https://localhost:7279`
+Перейти на `http://localhost:5031`
+
+### ✅ Готово!
+Вы должны увидеть таблицу товаров с 4 товарами:
+- Ноутбук ASUS VivoBook - 45,000 руб
+- Монитор Dell 27" - 25,000 руб
+- Клавиатура Logitech - 3,500 руб
+- Мышь Razer DeathAdder - 2,500 руб
 
 ## Архитектура приложения
 
