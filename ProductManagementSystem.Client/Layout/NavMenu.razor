@@ -1,9 +1,24 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using ProductManagementSystem.Client.Services
+@inject ThemeService ThemeService
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">📦 Управление товарами</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-secondary btn-sm" title="Переключить тему" @onclick="ToggleTheme">
+                @if (ThemeService.IsDarkMode)
+                {
+                    <span>☀️</span>
+                }
+                else
+                {
+                    <span>🌙</span>
+                }
+            </button>
+            <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </div>
 </div>
 
@@ -30,5 +45,10 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void ToggleTheme()
+    {
+        ThemeService.ToggleTheme();
     }
 }

@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "ProductManagementSystem.Client",
   "resources": {
-    "hash": "sha256-6mx8Z2JzNMIgblcBV2ng9KA71z0uh1Rorj58JRje1iU=",
+    "hash": "sha256-D78g7T3BRqme7Wm7Be0qJiuZi/qV01inifM3IFlBlMM=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.65wbz7t8mt.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -201,10 +201,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "ProductManagementSystem.Shared.ezrzngetcc.wasm": "ProductManagementSystem.Shared.wasm",
-      "ProductManagementSystem.Shared.eay6nw3i1z.pdb": "ProductManagementSystem.Shared.pdb",
-      "ProductManagementSystem.Client.gstek4rn2p.wasm": "ProductManagementSystem.Client.wasm",
-      "ProductManagementSystem.Client.u7yz1oggur.pdb": "ProductManagementSystem.Client.pdb"
+      "ProductManagementSystem.Shared.3j5md690j0.wasm": "ProductManagementSystem.Shared.wasm",
+      "ProductManagementSystem.Shared.h5razxkf70.pdb": "ProductManagementSystem.Shared.pdb",
+      "ProductManagementSystem.Client.1h4so16kx3.wasm": "ProductManagementSystem.Client.wasm",
+      "ProductManagementSystem.Client.qky1m7nrak.pdb": "ProductManagementSystem.Client.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
@@ -414,12 +414,12 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "ProductManagementSystem.Shared.ezrzngetcc.wasm": "sha256-ak897hsX+XF+J694RkL1bswZ3TusGRhIYu3WzzIhAIg=",
-      "ProductManagementSystem.Client.gstek4rn2p.wasm": "sha256-sN1VaZRFV57W8g68kYkcsvOXAKbsTba3o0VTthwLZ08="
+      "ProductManagementSystem.Shared.3j5md690j0.wasm": "sha256-f1rHFY2DA9U4fTDl6t4CxcAA19BBvAej/Ef+uRpLrXc=",
+      "ProductManagementSystem.Client.1h4so16kx3.wasm": "sha256-pSFKsAc+t6RhZQbKaFCaM0rhQFU44Up3RIx4cNgBf8c="
     },
     "pdb": {
-      "ProductManagementSystem.Shared.eay6nw3i1z.pdb": "sha256-FpqBeGFczn9+SGmZk+rWGAsg8a34fnrhndy9XLNbDMw=",
-      "ProductManagementSystem.Client.u7yz1oggur.pdb": "sha256-+phx+X5TLxNHHiKYWbOqM7YMEdRizqHHtDJrL1CqVDQ="
+      "ProductManagementSystem.Shared.h5razxkf70.pdb": "sha256-CzH+eobMh/Pdt+gAoOlHRj1MLHPv74Lfg1jzKDMcimI=",
+      "ProductManagementSystem.Client.qky1m7nrak.pdb": "sha256-SudUGcEY6cQZkri7p4Rsov5GXG7WDISCeK4EZNkW+jE="
     }
   },
   "cacheBootResources": true,

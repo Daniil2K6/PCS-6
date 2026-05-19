@@ -8,7 +8,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 // Конфигурация HTTP клиента для подключения к API серверу
-var apiBaseAddress = builder.Configuration["API:BaseAddress"] ?? "https://localhost:7088";
+var apiBaseAddress = builder.Configuration["API:BaseAddress"] ?? "http://localhost:5280";
 
 builder.Services.AddScoped(sp => new HttpClient 
 { 

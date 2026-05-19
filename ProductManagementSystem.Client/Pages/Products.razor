@@ -11,16 +11,6 @@
             <h1>Управление товарами</h1>
         </div>
         <div class="col-md-6 text-end">
-            <button class="btn btn-outline-secondary me-2" @onclick="ToggleTheme">
-                @if (ThemeService.IsDarkMode)
-                {
-                    <span>☀️ Светлая тема</span>
-                }
-                else
-                {
-                    <span>🌙 Темная тема</span>
-                }
-            </button>
             <button class="btn btn-primary" @onclick="ShowAddForm">
                 ➕ Добавить товар
             </button>

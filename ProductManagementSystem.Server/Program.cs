@@ -10,7 +10,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorClient", policy =>
     {
-        policy.WithOrigins("https://localhost:7279", "http://localhost:5279")
+        policy.WithOrigins("https://localhost:7279", "http://localhost:5279", "http://localhost:5031", "https://localhost:7031")
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -20,8 +20,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
-        ?? "Server=(localdb)\\mssqllocaldb;Database=ProductManagementSystemDb;Trusted_Connection=true;";
-    options.UseSqlServer(connectionString);
+        ?? "Data Source=ProductManagementSystem.db";
+    options.UseSqlite(connectionString);
 });
 
 var app = builder.Build();

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProductManagementSystem.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77c6aaf480dfa01ae6b2aec6ba1bfccfe404c401")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2684f25ac7ef50881d7aab1da71db2e815025859")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProductManagementSystem.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProductManagementSystem.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
