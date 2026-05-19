@@ -1,0 +1,114 @@
+# Logs
+logs/
+*.log
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options directory
+.vs/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build folder
+/build/
+/dist/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+
+# dotnet
+.dotnet/
+
+# Entity Framework migrations (optional)
+/Migrations/
+
+# SQL Server
+*.mdf
+*.ldf
+*.ndf
+
+# Local database
+ProductManagementSystemDb.*
+
+# Node modules (if using npm packages)
+node_modules/
+
+# Published Web App
+PublishedWebApps/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# IDE specific files
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+.vscode-test
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Output of npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv environment variables file
+.env
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+*.lnk
